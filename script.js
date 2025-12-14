@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function alreadysee() {
         const notif = document.querySelector(".bgnotif");
-        notif.style.display="none";
+        notif.className="closed";
     }
 
     function loadItem() {
