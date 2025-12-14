@@ -9,9 +9,17 @@
 </head>
 <body>
     <section class="notif">
-        <input type="number" name="" id="day" autocomplete="off" minlength="1" maxlength="2" min="1" max="31" placeholder="date">
-        <input type="number" name="" id="month" autocomplete="off" minlength="1" maxlength="2" min="1" max="12" placeholder="month">
-        <input type="text" name="" id="name" autocapitalize="on">
+        <div>
+            <label for="day">your birthday</label>
+            <input type="number" name="day" id="day" autocomplete="off" minlength="1" maxlength="2" min="1" max="31" placeholder="date">
+            <p>:</p>
+            <input type="number" name="" id="month" autocomplete="off" minlength="1" maxlength="2" min="1" max="12" placeholder="month">
+        </div>
+        <div>
+            <label for="name">your name</label>
+            <input type="text" name="name" id="name" autocapitalize="on">
+        </div>
+        <button>Done</button>
     </section>
 
     <script src="script.js"></script>

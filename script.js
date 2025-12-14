@@ -20,6 +20,5 @@ document.addEventListener("DOMContentLoaded", ()=> {
     if(localStorage.getItem("name") !== null) {
         const title = document.querySelector("title");
         title.innerText=`Happy Birthday ${localStorage.getItem("name")}`;
-        console.log("success");
     }
 })
