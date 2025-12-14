@@ -1,20 +1,25 @@
-const day = document.getElementById("day");
-const month = document.getElementById("month");
-const nameHbd = document.getElementById("name");
+document.addEventListener("DOMContentLoaded", ()=> {
 
-day.addEventListener("change", function() {
-    localStorage.setItem("day",day.value)
-})
-month.addEventListener("change", function() {
-    localStorage.setItem("month",month.value)
-})
+    const day = document.getElementById("day");
+    const month = document.getElementById("month");
+    const nameHbd = document.getElementById("name");
 
-nameHbd.addEventListener("change", function() {
-    localStorage.setItem("name",nameHbd.value);
-})
+    day.addEventListener("change", function() {
+        localStorage.setItem("day",day.value)
+    })
+    month.addEventListener("change", function() {
+        localStorage.setItem("month",month.value)
+    })
 
-if(localStorage.getItem("name") !== null) {
-    const title = document.querySelector("title");
-    title.innerText=`Happy birthday ${localStorage.getItem("name")}`;
-    console.log("success");
-}
+    nameHbd.addEventListener("change", function() {
+        localStorage.setItem("name",nameHbd.value);
+        const title = document.querySelector("title");
+        title.innerText=`Happy birthday ${localStorage.getItem("name")}`;
+    })
+    
+    if(localStorage.getItem("name") !== null) {
+        const title = document.querySelector("title");
+        title.innerText=`Happy Birthday ${localStorage.getItem("name")}`;
+        console.log("success");
+    }
+})
