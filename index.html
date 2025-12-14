@@ -8,19 +8,21 @@
     <link rel="shortcut icon" href="img/birthday-cake.png" type="image/x-icon">
 </head>
 <body>
-    <section class="notif">
-        <div>
-            <label for="day">your birthday</label>
-            <input type="number" name="day" id="day" autocomplete="off" minlength="1" maxlength="2" min="1" max="31" placeholder="date">
-            <p>:</p>
-            <input type="number" name="" id="month" autocomplete="off" minlength="1" maxlength="2" min="1" max="12" placeholder="month">
+    <div class="bgnotif">
+        <div class="notif">
+            <div>
+                <label for="day">your birthday</label>
+                <input type="number" name="day" id="day" autocomplete="off" minlength="1" maxlength="2" min="1" max="31" placeholder="date">
+                <p>:</p>
+                <input type="number" name="month" id="month" autocomplete="off" minlength="1" maxlength="2" min="1" max="12" placeholder="month">
+            </div>
+            <div>
+                <label for="name">your name</label>
+                <input type="text" name="name" id="name" autocapitalize="on" autocomplete="additional-name">
+            </div>
+            <button id="closeNotif">Done</button>
         </div>
-        <div>
-            <label for="name">your name</label>
-            <input type="text" name="name" id="name" autocapitalize="on">
-        </div>
-        <button>Done</button>
-    </section>
+    </div>
 
     <script src="script.js"></script>
 </body>
