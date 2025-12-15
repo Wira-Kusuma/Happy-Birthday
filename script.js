@@ -57,11 +57,13 @@ function loadMain() {
     
     const date = now.getDate();
     const month = now.getMonth() + 1;
+    
+    const comingDate = dayHbd.value - date;
+    const comingMonth = monthHbd.value - month;
 
     main.innerHTML=`
     <h1>Happy Birthday soon, ${nameHbd.value}</h1> 
-    <h2>Your Birthday in ${dayHbd.value - date} days : ${monthHbd.value - month} Month </h2>
-    <h2>Enjoy your days!</h2>
+    <h2>Your Birthday in ${comingDate} days : ${comingMonth} Month </h2>
     `;
     document.body.appendChild(main);
 }
