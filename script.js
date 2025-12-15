@@ -30,6 +30,9 @@ closeBtn.addEventListener("click", function () {
   }
 
   closeNotif();
+  saveTolocalStorage();
+  initialLoad();
+  localStorage.setItem("notif","true");
 });
 
 // closing notification function
@@ -39,3 +42,31 @@ function closeNotif() {
         document.querySelector(".bgnotif").style.display="none"
     },500)
 }
+
+function onceSeeNotif(){
+    if(localStorage.getItem("notif") == "true"){
+        closeNotif();
+    }
+}
+
+function initialLoad(){
+    document.title = `Happy Birthday ${nameHbd.value}`;
+};
+
+// local storage funtion
+function saveTolocalStorage(){
+    localStorage.setItem("dayHbd",dayHbd.value);
+    localStorage.setItem("monthHbd",monthHbd.value);
+    localStorage.setItem("nameHbd",nameHbd.value);
+}
+function localStorageLoad(){
+    dayHbd.value = localStorage.getItem("dayHbd") || "";
+    monthHbd.value = localStorage.getItem("monthHbd") || "";
+    nameHbd.value = localStorage.getItem("nameHbd") || "";
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+    onceSeeNotif();
+    localStorageLoad();
+    initialLoad();
+})
