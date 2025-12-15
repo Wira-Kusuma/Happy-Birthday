@@ -1,24 +1,23 @@
-let dayHbd = document.getElementById("day").value;
-let monthHbd = document.getElementById("month").value;
-let nameHbd = document.getElementById("name").value;
+let dayHbd = document.getElementById("day");
+let monthHbd = document.getElementById("month");
+let nameHbd = document.getElementById("name");
 
 
 // validate input
 let closeNotif = document.getElementById("closeNotif");
 closeNotif.addEventListener("click", function() {
-    if(dayHbd == "" || monthHbd == "" || nameHbd == "") {
+    if(dayHbd.value == "" || monthHbd.value == "" || nameHbd.value == "") {
         alert("do not blank");
     }else { 
         // to save item into localstorage
         const notif = document.querySelector(".bgnotif");
         notif.classList.add("closed");
         localStorage.setItem("notif","true");
-        localStorage.setItem("day",dayHbd);
-        localStorage.setItem("month",monthHbd);
-        localStorage.setItem("name",nameHbd);
+        localStorage.setItem("day",dayHbd.value);
+        localStorage.setItem("month",monthHbd.value);
+        localStorage.setItem("name",nameHbd.value);
         // show name in tittle
-        const title = document.querySelector("title");
-        title.innerText=`Happy birthday ${localStorage.getItem("name")}`;
+        
         loadMain();
     }
 });
@@ -31,12 +30,17 @@ function alreadyseeNotif() {
 function loadItem() {
     if(localStorage.getItem("notif") == "true") {
         alreadyseeNotif();
+
         const getname = localStorage.getItem("name");
         const getday = localStorage.getItem("day");
         const getmonth = localStorage.getItem("month");
-        nameHbd=getname;
-        dayHbd=getday;
-        monthHbd=getmonth;
+
+        nameHbd.value=getname;
+        dayHbd.value=getday;
+        monthHbd.value=getmonth;
+
+        const title = document.querySelector("title");
+        title.innerText=`Happy birthday ${localStorage.getItem("name")}`;
         loadMain();
     }
 }
@@ -53,11 +57,10 @@ function loadMain() {
     
     const date = now.getDate();
     const month = now.getMonth() + 1;
-    const hour = now.getHours();
 
     main.innerHTML=`
-    <h1>Happy Birthday soon, ${nameHbd}</h1> 
-    <h2>Your Birthday in ${dayHbd - date} days : ${monthHbd - month} Month </h2>
+    <h1>Happy Birthday soon, ${nameHbd.value}</h1> 
+    <h2>Your Birthday in ${dayHbd.value - date} days : ${monthHbd.value - month} Month </h2>
     <h2>Enjoy your days!</h2>
     `;
     document.body.appendChild(main);
