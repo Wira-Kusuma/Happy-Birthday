@@ -2,9 +2,9 @@ let dayHbd = document.getElementById("day");
 let monthHbd = document.getElementById("month");
 let nameHbd = document.getElementById("name");
 
-let closeNotif = document.getElementById("closeNotif");
+let closeBtn = document.getElementById("closeBtn");
 
-closeNotif.addEventListener("click", function () {
+closeBtn.addEventListener("click", function () {
   const day = Number(dayHbd.value);
   const month = Number(monthHbd.value);
   const name = nameHbd.value;
@@ -29,5 +29,13 @@ closeNotif.addEventListener("click", function () {
     return;
   }
 
-  alert("success");
+  closeNotif();
 });
+
+// closing notification function
+function closeNotif() {
+    document.querySelector(".bgnotif").classList.add("closed");
+    setTimeout( () => {
+        document.querySelector(".bgnotif").style.display="none"
+    },500)
+}
