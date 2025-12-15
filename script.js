@@ -42,13 +42,13 @@ function closeNotif() {
         document.querySelector(".bgnotif").style.display="none"
     },500)
 }
-
+// see notification just 1 time
 function onceSeeNotif(){
     if(localStorage.getItem("notif") == "true"){
         closeNotif();
     }
 }
-
+// what need to load when re open website
 function initialLoad(){
     document.title = `Happy Birthday ${nameHbd.value}`;
 };
@@ -65,6 +65,7 @@ function localStorageLoad(){
     nameHbd.value = localStorage.getItem("nameHbd") || "";
 }
 
+// when re open website, what will we load
 document.addEventListener("DOMContentLoaded", function(){
     onceSeeNotif();
     localStorageLoad();
