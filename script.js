@@ -1,20 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-    let day = document.getElementById("day");
-    let month = document.getElementById("month");
+    let dayHbd = document.getElementById("day");
+    let monthHbd = document.getElementById("month");
     let nameHbd = document.getElementById("name");
-
-    // save in local storage when input
-    day.addEventListener("change", function() {
-        localStorage.setItem("day",day.value)
-    });
-    month.addEventListener("change", function() {
-        localStorage.setItem("month",month.value)
-    });
-    nameHbd.addEventListener("change", function() {
-        localStorage.setItem("name",nameHbd.value);
-        const title = document.querySelector("title");
-        title.innerText=`Happy birthday ${localStorage.getItem("name")}`;
-    });
 
     // load name to title from local storage
     if(localStorage.getItem("name") !== null) {
@@ -25,32 +12,56 @@ document.addEventListener("DOMContentLoaded", function() {
     // validate input
     let closeNotif = document.getElementById("closeNotif");
     closeNotif.addEventListener("click", function() {
-        if(day.value == "" || month.value == "" || nameHbd.value == "") {
+        if(dayHbd.value == "" || monthHbd.value == "" || nameHbd.value == "") {
             alert("do not blank");
-        }else {
+        }else { 
+            // to save item into localstorage
             const notif = document.querySelector(".bgnotif");
             notif.classList.add("closed");
             localStorage.setItem("notif","true");
+            localStorage.setItem("Hbd",dayHbd.value);
+            localStorage.setItem("month",monthHbd.value);
+            localStorage.setItem("name",nameHbd.value);
+            // show name in tittle
+            const title = document.querySelector("title");
+            title.innerText=`Happy birthday ${localStorage.getItem("name")}`;
+            loadMain();
         }
     });
 
     // show notification once time
-    function alreadysee() {
+    function alreadyseeNotif() {
         const notif = document.querySelector(".bgnotif");
         notif.className="closed";
     }
     function loadItem() {
         if(localStorage.getItem("notif") == "true") {
-            alreadysee();
+            alreadyseeNotif();
+            const getname = localStorage.getItem("name");
+            const getday = localStorage.getItem("day");
+            const getmonth = localStorage.getItem("month");
+            nameHbd.value=getname;
+            dayHbd.value=getday;
+            monthHbd.value=getmonth;
+            loadMain();
         }
     }
 
     // initial load
     loadItem();
 
-    let main = document.createElement("main");
-    main.innerHTML=`
-    <h1>Happy Birthday, ${localStorage.getItem("name")}</h1>
-    `;
-    document.body.appendChild(main)
+    function loadMain() {
+        let main = document.createElement("main");
+        const now = new Date();
+        
+        const date = now.getDate();
+        const month = now.getMonth() + 1;
+
+
+        main.innerHTML=`
+        <h1>Happy Birthday, ${nameHbd.value}</h1> 
+        <h2>Your Birthday in ${dayHbd.value - date} days ${monthHbd.value - month} Month </h2>
+        `;
+        document.body.appendChild(main);
+    }
 });
