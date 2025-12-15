@@ -59,8 +59,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const hour = now.getHours();
 
         main.innerHTML=`
-        <h1>Happy Birthday, ${nameHbd.value}</h1> 
-        <h2>Your Birthday in ${24 - hour} hours : ${dayHbd.value - date} days : ${monthHbd.value - month} Month </h2>
+        <h1>Happy Birthday soon, ${nameHbd.value}</h1> 
+        <h2>Your Birthday in ${dayHbd.value - date} days : ${monthHbd.value - month} Month </h2>
         <h2>Enjoy your days!</h2>
         `;
         document.body.appendChild(main);
