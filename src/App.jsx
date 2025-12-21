@@ -1,35 +1,46 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './index.css'
+import { useEffect } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [birthdayNow, setBirthdayNow] = useState(false);
+  useEffect(()=>{
+    const now = new Date();
+    // today date
+    const date = now.getDate();
+    const month = now.getMonth() + 1;
+    // birthday date
+    const Bdate = Number(prompt("what you birthday Date?"));
+    const Bmonth = Number(prompt("what you birthday Month?"));
+    
+      if(date === Bdate && month === Bmonth){
+      setBirthdayNow(true);
+      document.title="Happy Birthday Wira!";
+    }
+  },[])
+  
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <main>
+      <BirthdayToday birthdayNow={birthdayNow}/>
+      <BirthdayLater birthdayNow={birthdayNow}/>
+    </main>
   )
 }
 
-export default App
+function BirthdayToday({birthdayNow}) {
+  return(
+    <div style={birthdayNow == true ? {display:'flex'} : {display:'none'}} className='birthdayToday'>
+      <h1>Happy birthday Wira!</h1>
+      <p>Wishing you a year filled with joy, laughter, and wonderful moments. May all your dreams come true!</p>
+      <img src="img/birthday-cake.gif" alt="birthday cake gif" />
+    </div>
+  )
+}
+function BirthdayLater({birthdayNow}) {
+  return(
+    <div style={birthdayNow == true ? {display: 'none'} : {display: 'flex'}} className='birthdayLater'>
+      <h1>Your birthday not now</h1>
+    </div>
+  )
+}
