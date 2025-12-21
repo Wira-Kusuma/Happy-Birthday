@@ -10,8 +10,20 @@ export default function App() {
     const date = now.getDate();
     const month = now.getMonth() + 1;
     // birthday date
-    const Bdate = Number(prompt("what you birthday Date?"));
-    const Bmonth = Number(prompt("what you birthday Month?"));
+
+    const Bdate = Number(prompt("What is your birthday date? (1-31)"));
+    const Bmonth = Number(prompt("What is your birthday month? (1-12)"));
+    
+    // Input validation
+    if (isNaN(Bdate) || isNaN(Bmonth)) {
+      alert("Please enter valid numbers!");
+      return; // Stop execution if not valid
+    }
+    
+    if (Bdate < 1 || Bdate > 31 || Bmonth < 1 || Bmonth > 12) {
+      alert("Invalid date or month!");
+      return;
+    }
     
       if(date === Bdate && month === Bmonth){
       setBirthdayNow(true);
